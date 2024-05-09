@@ -1,0 +1,3326 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.3.7",
+    "title": "Branch Finder",
+    "description": "This API returns a list of branches and their positions. Information includes address and geographic coordinates (latitude and longitude)."
+  },
+  "host": "api-sandbox.commerzbank.com",
+  "basePath": "/branches-api/1/v1",
+  "schemes": [
+    "https"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/healthcheck": {
+      "get": {
+        "operationId": "getHealthcheck",
+        "summary": "Get service status",
+        "description": "Retrieve the healthcheck status of the backend service.",
+        "tags": [
+          "healthcheck"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/status"
+            },
+            "examples": {
+              "Healthy": {
+                "uptimeFormatted": "PT1149H45M20.406S",
+                "buildTime": "2021-04-07T11:16:15Z",
+                "buildVersion": "3.0.3",
+                "healthy": true,
+                "uptime": 4139120406
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/problem"
+            }
+          }
+        }
+      }
+    },
+    "/geosearch/address": {
+      "get": {
+        "operationId": "getServiceVersionBranchesGeoSearchAddress",
+        "summary": "Get branches by text search",
+        "description": "Find all branch information by text search.",
+        "tags": [
+          "geosearch"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/addressParam"
+          },
+          {
+            "$ref": "#/parameters/countryParam"
+          },
+          {
+            "$ref": "#/parameters/accuracyParam"
+          },
+          {
+            "$ref": "#/parameters/typeParam"
+          },
+          {
+            "$ref": "#/parameters/approxDistanceParam"
+          },
+          {
+            "$ref": "#/parameters/minBranchesParam"
+          },
+          {
+            "$ref": "#/parameters/orgaDataParam"
+          },
+          {
+            "$ref": "#/parameters/advisorsParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/branches"
+            },
+            "examples": {
+              "Hamburg-Bahrenfelder-Str": [
+                {
+                  "id": "60ac41b0ac30b2f5d09e2780",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20040",
+                  "orgNummer": "0001417",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Altona",
+                  "anschriftPostleitzahl": "22765",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Paul-Nevermann-Platz 5",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 39831-0",
+                  "telefax": "040 39831-152",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:30",
+                  "moMorgenBis": "13:00",
+                  "moNachmiVon": "14:00",
+                  "moNachmiBis": "16:00",
+                  "diMorgenVon": "09:30",
+                  "diMorgenBis": "13:00",
+                  "diNachmiVon": "14:00",
+                  "diNachmiBis": "18:00",
+                  "miMorgenVon": "09:30",
+                  "miMorgenBis": "13:00",
+                  "miNachmiVon": "14:00",
+                  "miNachmiBis": "16:00",
+                  "doMorgenVon": "09:30",
+                  "doMorgenBis": "13:00",
+                  "doNachmiVon": "14:00",
+                  "doNachmiBis": "18:00",
+                  "frMorgenVon": "09:30",
+                  "frMorgenBis": "13:00",
+                  "frNachmiVon": "14:00",
+                  "frNachmiBis": "16:00",
+                  "kasseMoMorgenVon": "09:30",
+                  "kasseMoMorgenBis": "13:00",
+                  "kasseMoNachmiVon": "14:00",
+                  "kasseMoNachmiBis": "16:00",
+                  "kasseDiMorgenVon": "09:30",
+                  "kasseDiMorgenBis": "13:00",
+                  "kasseDiNachmiVon": "14:00",
+                  "kasseDiNachmiBis": "18:00",
+                  "kasseMiMorgenVon": "09:30",
+                  "kasseMiMorgenBis": "13:00",
+                  "kasseMiNachmiVon": "14:00",
+                  "kasseMiNachmiBis": "16:00",
+                  "kasseDoMorgenVon": "09:30",
+                  "kasseDoMorgenBis": "13:00",
+                  "kasseDoNachmiVon": "14:00",
+                  "kasseDoNachmiBis": "18:00",
+                  "kasseFrMorgenVon": "09:30",
+                  "kasseFrMorgenBis": "13:00",
+                  "kasseFrNachmiVon": "14:00",
+                  "kasseFrNachmiBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    53.55116899999999,
+                    9.9357344
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e2773",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20015",
+                  "orgNummer": "0083739",
+                  "orgTyp": "43",
+                  "orgTypName": "FILOK- Filiale ohne Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Osterstraße",
+                  "anschriftPostleitzahl": "20259",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Osterstr. 111",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 401993-0",
+                  "telefax": "040 401993-33",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:30",
+                  "moMorgenBis": "13:00",
+                  "moNachmiVon": "14:00",
+                  "moNachmiBis": "16:00",
+                  "diMorgenVon": "09:30",
+                  "diMorgenBis": "13:00",
+                  "diNachmiVon": "14:00",
+                  "diNachmiBis": "18:00",
+                  "miMorgenVon": "09:30",
+                  "miMorgenBis": "13:00",
+                  "miNachmiVon": "14:00",
+                  "miNachmiBis": "16:00",
+                  "doMorgenVon": "09:30",
+                  "doMorgenBis": "13:00",
+                  "doNachmiVon": "14:00",
+                  "doNachmiBis": "18:00",
+                  "frMorgenVon": "09:30",
+                  "frMorgenBis": "13:00",
+                  "frNachmiVon": "14:00",
+                  "frNachmiBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "TEILFREI",
+                  "naechsteFilHB": "20178",
+                  "position": [
+                    53.5756181,
+                    9.9527717
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e278a",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20053",
+                  "orgNummer": "0089437",
+                  "orgTyp": "43",
+                  "orgTypName": "FILOK- Filiale ohne Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Othmarschen",
+                  "anschriftPostleitzahl": "22607",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Waitzstr. 11",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 890587-0",
+                  "telefax": "040 890587-50",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": false,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:30",
+                  "moMorgenBis": "13:00",
+                  "moNachmiVon": "14:00",
+                  "moNachmiBis": "16:00",
+                  "diMorgenVon": "09:30",
+                  "diMorgenBis": "13:00",
+                  "diNachmiVon": "14:00",
+                  "diNachmiBis": "18:00",
+                  "miMorgenVon": "09:30",
+                  "miMorgenBis": "13:00",
+                  "miNachmiVon": "14:00",
+                  "miNachmiBis": "16:00",
+                  "doMorgenVon": "09:30",
+                  "doMorgenBis": "13:00",
+                  "doNachmiVon": "14:00",
+                  "doNachmiBis": "18:00",
+                  "frMorgenVon": "09:30",
+                  "frMorgenBis": "13:00",
+                  "frNachmiVon": "14:00",
+                  "frNachmiBis": "16:00",
+                  "kasseMoMorgenVon": "09:30",
+                  "kasseMoMorgenBis": "13:00",
+                  "kasseMoNachmiVon": "14:00",
+                  "kasseMoNachmiBis": "16:00",
+                  "kasseDiMorgenVon": "09:30",
+                  "kasseDiMorgenBis": "13:00",
+                  "kasseDiNachmiVon": "14:00",
+                  "kasseDiNachmiBis": "18:00",
+                  "kasseMiMorgenVon": "09:30",
+                  "kasseMiMorgenBis": "13:00",
+                  "kasseMiNachmiVon": "14:00",
+                  "kasseMiNachmiBis": "16:00",
+                  "kasseDoMorgenVon": "09:30",
+                  "kasseDoMorgenBis": "13:00",
+                  "kasseDoNachmiVon": "14:00",
+                  "kasseDoNachmiBis": "18:00",
+                  "kasseFrMorgenVon": "09:30",
+                  "kasseFrMorgenBis": "13:00",
+                  "kasseFrNachmiVon": "14:00",
+                  "kasseFrNachmiBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "NICHTFREI",
+                  "naechsteFilHB": "20040",
+                  "position": [
+                    53.5593823,
+                    9.8849422
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e277f",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20038",
+                  "orgNummer": "0001386",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Jungfernstieg",
+                  "anschriftPostleitzahl": "20354",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Große Bleichen 3",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 3683-7000",
+                  "telefax": "040 3683-1126",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:30",
+                  "moMorgenBis": "18:00",
+                  "diMorgenVon": "09:30",
+                  "diMorgenBis": "18:00",
+                  "miMorgenVon": "09:30",
+                  "miMorgenBis": "18:00",
+                  "doMorgenVon": "09:30",
+                  "doMorgenBis": "18:00",
+                  "frMorgenVon": "09:30",
+                  "frMorgenBis": "16:00",
+                  "kasseMoMorgenVon": "09:30",
+                  "kasseMoMorgenBis": "18:00",
+                  "kasseDiMorgenVon": "09:30",
+                  "kasseDiMorgenBis": "18:00",
+                  "kasseMiMorgenVon": "09:30",
+                  "kasseMiMorgenBis": "18:00",
+                  "kasseDoMorgenVon": "09:30",
+                  "kasseDoMorgenBis": "18:00",
+                  "kasseFrMorgenVon": "09:30",
+                  "kasseFrMorgenBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    53.5535055,
+                    9.9909959
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e2789",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20050",
+                  "orgNummer": "0089435",
+                  "orgTyp": "43",
+                  "orgTypName": "FILOK- Filiale ohne Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Osdorf derzeit vorsorglich geschlossen",
+                  "anschriftPostleitzahl": "22609",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Julius-Brecht-Str. 4",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 800976-0",
+                  "telefax": "040 800976-50",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "cashgroup": false,
+                  "vault": false,
+                  "barriereTyp": "TEILFREI",
+                  "naechsteFilHB": "20178",
+                  "position": [
+                    53.5701881,
+                    9.8646093
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e2791",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20076",
+                  "orgNummer": "0088141",
+                  "orgTyp": "08",
+                  "orgTypName": "UVV19-Filiale ohne Kasse (UVV19)",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Hafencity derzeit vorsorglich geschlossen",
+                  "anschriftPostleitzahl": "20457",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Überseeboulevard 2",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 3008692-0",
+                  "telefax": "040 3008692-50",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": false,
+                  "einzahlautomat": false,
+                  "cashin": false,
+                  "sbTerminal": false,
+                  "bezeichnung": "0P",
+                  "cashgroup": false,
+                  "vault": false,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    53.5431547,
+                    9.997312299999999
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e2777",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20024",
+                  "orgNummer": "0001343",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Altstadt derzeit vorsorglich geschlossen",
+                  "anschriftPostleitzahl": "20095",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Ida-Ehre-Platz 14",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 30957-0",
+                  "telefax": "040 30957-133",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": true,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "TEILFREI",
+                  "naechsteFilHB": "20038",
+                  "position": [
+                    53.55067,
+                    9.99971
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e2796",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20082",
+                  "orgNummer": "0088399",
+                  "orgTyp": "08",
+                  "orgTypName": "UVV19-Filiale ohne Kasse (UVV19)",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Pöseldorf derzeit vorsorglich geschlossen",
+                  "anschriftPostleitzahl": "20148",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Mittelweg 41b",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 414624-0",
+                  "telefax": "040 414624-50",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": false,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "TEILFREI",
+                  "naechsteFilHB": "20038",
+                  "position": [
+                    53.57026,
+                    9.994819999999999
+                  ],
+                  "kasse": false
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Parameter(s) required or have/has invalid value.",
+            "schema": {
+              "$ref": "#/definitions/problem"
+            },
+            "examples": {
+              "Bad-Request": {
+                "type": "about:blank",
+                "status": 400,
+                "title": "Bad Request",
+                "detail": "The original error is masked. Please contact support for details.",
+                "instance": "/error-details/f43e894a-6994-4ceb-97f7-5f2a84ed2a36",
+                "coba-activity-id": "92299cb5-5601-4562-b8ef-622a59ad882b",
+                "coba-error-id": "f43e894a-6994-4ceb-97f7-5f2a84ed2a36",
+                "coba-correlation-id": "Id-d4cfac600e40a3a7321d0074"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required",
+            "schema": {
+              "$ref": "#/definitions/problem"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/problem"
+            }
+          }
+        }
+      }
+    },
+    "/geosearch/city_street": {
+      "get": {
+        "operationId": "getServiceVersionBranchesGeoSearchCityStreet",
+        "summary": "Get branches by city & street",
+        "description": "Retrieves the entries using given city and street. Filter by branch type.",
+        "tags": [
+          "geosearch"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/cityParam"
+          },
+          {
+            "$ref": "#/parameters/streetParam"
+          },
+          {
+            "$ref": "#/parameters/countryParam"
+          },
+          {
+            "$ref": "#/parameters/typeParam"
+          },
+          {
+            "$ref": "#/parameters/approxDistanceParam"
+          },
+          {
+            "$ref": "#/parameters/minBranchesParam"
+          },
+          {
+            "$ref": "#/parameters/accuracyParam"
+          },
+          {
+            "$ref": "#/parameters/orgaDataParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/branches"
+            },
+            "examples": {
+              "Hamburg-Mönckebergstraße": [
+                {
+                  "id": "60ac41b0ac30b2f5d09e2777",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20024",
+                  "orgNummer": "0001343",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Altstadt derzeit vorsorglich geschlossen",
+                  "anschriftPostleitzahl": "20095",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Ida-Ehre-Platz 14",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 30957-0",
+                  "telefax": "040 30957-133",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": true,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "TEILFREI",
+                  "naechsteFilHB": "20038",
+                  "position": [
+                    53.55067,
+                    9.99971
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e277f",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20038",
+                  "orgNummer": "0001386",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Jungfernstieg",
+                  "anschriftPostleitzahl": "20354",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Große Bleichen 3",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 3683-7000",
+                  "telefax": "040 3683-1126",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:30",
+                  "moMorgenBis": "18:00",
+                  "diMorgenVon": "09:30",
+                  "diMorgenBis": "18:00",
+                  "miMorgenVon": "09:30",
+                  "miMorgenBis": "18:00",
+                  "doMorgenVon": "09:30",
+                  "doMorgenBis": "18:00",
+                  "frMorgenVon": "09:30",
+                  "frMorgenBis": "16:00",
+                  "kasseMoMorgenVon": "09:30",
+                  "kasseMoMorgenBis": "18:00",
+                  "kasseDiMorgenVon": "09:30",
+                  "kasseDiMorgenBis": "18:00",
+                  "kasseMiMorgenVon": "09:30",
+                  "kasseMiMorgenBis": "18:00",
+                  "kasseDoMorgenVon": "09:30",
+                  "kasseDoMorgenBis": "18:00",
+                  "kasseFrMorgenVon": "09:30",
+                  "kasseFrMorgenBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    53.5535055,
+                    9.9909959
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e2791",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20076",
+                  "orgNummer": "0088141",
+                  "orgTyp": "08",
+                  "orgTypName": "UVV19-Filiale ohne Kasse (UVV19)",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Hafencity derzeit vorsorglich geschlossen",
+                  "anschriftPostleitzahl": "20457",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Überseeboulevard 2",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 3008692-0",
+                  "telefax": "040 3008692-50",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": false,
+                  "einzahlautomat": false,
+                  "cashin": false,
+                  "sbTerminal": false,
+                  "bezeichnung": "0P",
+                  "cashgroup": false,
+                  "vault": false,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    53.5431547,
+                    9.997312299999999
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e2770",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20010",
+                  "orgNummer": "0089506",
+                  "orgTyp": "08",
+                  "orgTypName": "UVV19-Filiale ohne Kasse (UVV19)",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Berliner Tor",
+                  "anschriftPostleitzahl": "20097",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Beim Strohhause 19",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 2809542-0",
+                  "telefax": "040 2809542-10",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:30",
+                  "moMorgenBis": "13:00",
+                  "moNachmiVon": "14:00",
+                  "moNachmiBis": "16:00",
+                  "diMorgenVon": "09:30",
+                  "diMorgenBis": "13:00",
+                  "diNachmiVon": "14:00",
+                  "diNachmiBis": "18:00",
+                  "miMorgenVon": "09:30",
+                  "miMorgenBis": "13:00",
+                  "miNachmiVon": "14:00",
+                  "miNachmiBis": "16:00",
+                  "doMorgenVon": "09:30",
+                  "doMorgenBis": "13:00",
+                  "doNachmiVon": "14:00",
+                  "doNachmiBis": "18:00",
+                  "frMorgenVon": "09:30",
+                  "frMorgenBis": "13:00",
+                  "frNachmiVon": "14:00",
+                  "frNachmiBis": "16:00",
+                  "kasseMoMorgenVon": "09:30",
+                  "kasseMoMorgenBis": "13:00",
+                  "kasseMoNachmiVon": "14:00",
+                  "kasseMoNachmiBis": "16:00",
+                  "kasseDiMorgenVon": "09:30",
+                  "kasseDiMorgenBis": "13:00",
+                  "kasseDiNachmiVon": "14:00",
+                  "kasseDiNachmiBis": "18:00",
+                  "kasseMiMorgenVon": "09:30",
+                  "kasseMiMorgenBis": "13:00",
+                  "kasseMiNachmiVon": "14:00",
+                  "kasseMiNachmiBis": "16:00",
+                  "kasseDoMorgenVon": "09:30",
+                  "kasseDoMorgenBis": "13:00",
+                  "kasseDoNachmiVon": "14:00",
+                  "kasseDoNachmiBis": "18:00",
+                  "kasseFrMorgenVon": "09:30",
+                  "kasseFrMorgenBis": "13:00",
+                  "kasseFrNachmiVon": "14:00",
+                  "kasseFrNachmiBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    53.5537491,
+                    10.0218535
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e278d",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20060",
+                  "orgNummer": "0082814",
+                  "orgTyp": "43",
+                  "orgTypName": "FILOK- Filiale ohne Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Außenalster",
+                  "anschriftPostleitzahl": "20099",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Lübeckertordamm 5",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 3683-0",
+                  "telefax": "040 3683-5947",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": false,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:30",
+                  "moMorgenBis": "16:00",
+                  "diMorgenVon": "09:30",
+                  "diMorgenBis": "18:00",
+                  "miMorgenVon": "09:30",
+                  "miMorgenBis": "16:00",
+                  "doMorgenVon": "09:30",
+                  "doMorgenBis": "18:00",
+                  "frMorgenVon": "09:30",
+                  "frMorgenBis": "16:00",
+                  "cashgroup": false,
+                  "vault": false,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    53.558572,
+                    10.0218882
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e2796",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20082",
+                  "orgNummer": "0088399",
+                  "orgTyp": "08",
+                  "orgTypName": "UVV19-Filiale ohne Kasse (UVV19)",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Pöseldorf derzeit vorsorglich geschlossen",
+                  "anschriftPostleitzahl": "20148",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Mittelweg 41b",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 414624-0",
+                  "telefax": "040 414624-50",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": false,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "TEILFREI",
+                  "naechsteFilHB": "20038",
+                  "position": [
+                    53.57026,
+                    9.994819999999999
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b1ac30b2f5d09e28ed",
+                  "importGroup": "BRANCHES",
+                  "nummer": "38637",
+                  "orgNummer": "0088824",
+                  "orgTyp": "08",
+                  "orgTypName": "UVV19-Filiale ohne Kasse (UVV19)",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Hamburger Straße derzeit vorsorglich geschlossen",
+                  "anschriftPostleitzahl": "22083",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Hamburger Str. 123",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 298018-0",
+                  "telefax": "040 296444",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": false,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "cashgroup": false,
+                  "vault": false,
+                  "barriereTyp": "TEILFREI",
+                  "naechsteFilHB": "20022",
+                  "position": [
+                    53.5759792,
+                    10.0362362
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e2774",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20021",
+                  "orgNummer": "0089433",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Goldbekplatz",
+                  "anschriftPostleitzahl": "22303",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Goldbekplatz 3",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 278581-0",
+                  "telefax": "040 278581-40",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "cashgroup": false,
+                  "vault": false,
+                  "barriereTyp": "TEILFREI",
+                  "naechsteFilHB": "20038",
+                  "position": [
+                    53.5842226,
+                    10.0094263
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e2773",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20015",
+                  "orgNummer": "0083739",
+                  "orgTyp": "43",
+                  "orgTypName": "FILOK- Filiale ohne Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Osterstraße",
+                  "anschriftPostleitzahl": "20259",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Osterstr. 111",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 401993-0",
+                  "telefax": "040 401993-33",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:30",
+                  "moMorgenBis": "13:00",
+                  "moNachmiVon": "14:00",
+                  "moNachmiBis": "16:00",
+                  "diMorgenVon": "09:30",
+                  "diMorgenBis": "13:00",
+                  "diNachmiVon": "14:00",
+                  "diNachmiBis": "18:00",
+                  "miMorgenVon": "09:30",
+                  "miMorgenBis": "13:00",
+                  "miNachmiVon": "14:00",
+                  "miNachmiBis": "16:00",
+                  "doMorgenVon": "09:30",
+                  "doMorgenBis": "13:00",
+                  "doNachmiVon": "14:00",
+                  "doNachmiBis": "18:00",
+                  "frMorgenVon": "09:30",
+                  "frMorgenBis": "13:00",
+                  "frNachmiVon": "14:00",
+                  "frNachmiBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "TEILFREI",
+                  "naechsteFilHB": "20178",
+                  "position": [
+                    53.5756181,
+                    9.9527717
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e277d",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20032",
+                  "orgNummer": "0062950",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Eppendorf",
+                  "anschriftPostleitzahl": "20249",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Eppendorfer Landstr. 42",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 471030-0",
+                  "telefax": "040 471030-70",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:30",
+                  "moMorgenBis": "13:00",
+                  "moNachmiVon": "14:00",
+                  "moNachmiBis": "16:00",
+                  "diMorgenVon": "09:30",
+                  "diMorgenBis": "13:00",
+                  "diNachmiVon": "14:00",
+                  "diNachmiBis": "18:00",
+                  "miMorgenVon": "09:30",
+                  "miMorgenBis": "13:00",
+                  "miNachmiVon": "14:00",
+                  "miNachmiBis": "16:00",
+                  "doMorgenVon": "09:30",
+                  "doMorgenBis": "13:00",
+                  "doNachmiVon": "14:00",
+                  "doNachmiBis": "18:00",
+                  "frMorgenVon": "09:30",
+                  "frMorgenBis": "13:00",
+                  "frNachmiVon": "14:00",
+                  "frNachmiBis": "16:00",
+                  "kasseMoMorgenVon": "09:30",
+                  "kasseMoMorgenBis": "13:00",
+                  "kasseMoNachmiVon": "14:00",
+                  "kasseMoNachmiBis": "16:00",
+                  "kasseDiMorgenVon": "09:30",
+                  "kasseDiMorgenBis": "13:00",
+                  "kasseDiNachmiVon": "14:00",
+                  "kasseDiNachmiBis": "18:00",
+                  "kasseMiMorgenVon": "09:30",
+                  "kasseMiMorgenBis": "13:00",
+                  "kasseMiNachmiVon": "14:00",
+                  "kasseMiNachmiBis": "16:00",
+                  "kasseDoMorgenVon": "09:30",
+                  "kasseDoMorgenBis": "13:00",
+                  "kasseDoNachmiVon": "14:00",
+                  "kasseDoNachmiBis": "18:00",
+                  "kasseFrMorgenVon": "09:30",
+                  "kasseFrMorgenBis": "13:00",
+                  "kasseFrNachmiVon": "14:00",
+                  "kasseFrNachmiBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "NICHTFREI",
+                  "naechsteFilHB": "20038",
+                  "position": [
+                    53.5874448,
+                    9.9853649
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e2780",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20040",
+                  "orgNummer": "0001417",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Altona",
+                  "anschriftPostleitzahl": "22765",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Paul-Nevermann-Platz 5",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 39831-0",
+                  "telefax": "040 39831-152",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:30",
+                  "moMorgenBis": "13:00",
+                  "moNachmiVon": "14:00",
+                  "moNachmiBis": "16:00",
+                  "diMorgenVon": "09:30",
+                  "diMorgenBis": "13:00",
+                  "diNachmiVon": "14:00",
+                  "diNachmiBis": "18:00",
+                  "miMorgenVon": "09:30",
+                  "miMorgenBis": "13:00",
+                  "miNachmiVon": "14:00",
+                  "miNachmiBis": "16:00",
+                  "doMorgenVon": "09:30",
+                  "doMorgenBis": "13:00",
+                  "doNachmiVon": "14:00",
+                  "doNachmiBis": "18:00",
+                  "frMorgenVon": "09:30",
+                  "frMorgenBis": "13:00",
+                  "frNachmiVon": "14:00",
+                  "frNachmiBis": "16:00",
+                  "kasseMoMorgenVon": "09:30",
+                  "kasseMoMorgenBis": "13:00",
+                  "kasseMoNachmiVon": "14:00",
+                  "kasseMoNachmiBis": "16:00",
+                  "kasseDiMorgenVon": "09:30",
+                  "kasseDiMorgenBis": "13:00",
+                  "kasseDiNachmiVon": "14:00",
+                  "kasseDiNachmiBis": "18:00",
+                  "kasseMiMorgenVon": "09:30",
+                  "kasseMiMorgenBis": "13:00",
+                  "kasseMiNachmiVon": "14:00",
+                  "kasseMiNachmiBis": "16:00",
+                  "kasseDoMorgenVon": "09:30",
+                  "kasseDoMorgenBis": "13:00",
+                  "kasseDoNachmiVon": "14:00",
+                  "kasseDoNachmiBis": "18:00",
+                  "kasseFrMorgenVon": "09:30",
+                  "kasseFrMorgenBis": "13:00",
+                  "kasseFrNachmiVon": "14:00",
+                  "kasseFrNachmiBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    53.55116899999999,
+                    9.9357344
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e2775",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20022",
+                  "orgNummer": "0001233",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Wandsbek",
+                  "anschriftPostleitzahl": "22041",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Schloßstr. 8",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 68292-0",
+                  "telefax": "040 68292-150",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:30",
+                  "moMorgenBis": "13:00",
+                  "moNachmiVon": "14:00",
+                  "moNachmiBis": "16:00",
+                  "diMorgenVon": "09:30",
+                  "diMorgenBis": "13:00",
+                  "diNachmiVon": "14:00",
+                  "diNachmiBis": "18:00",
+                  "miMorgenVon": "09:30",
+                  "miMorgenBis": "13:00",
+                  "miNachmiVon": "14:00",
+                  "miNachmiBis": "16:00",
+                  "doMorgenVon": "09:30",
+                  "doMorgenBis": "13:00",
+                  "doNachmiVon": "14:00",
+                  "doNachmiBis": "18:00",
+                  "frMorgenVon": "09:30",
+                  "frMorgenBis": "13:00",
+                  "frNachmiVon": "14:00",
+                  "frNachmiBis": "16:00",
+                  "kasseMoMorgenVon": "09:30",
+                  "kasseMoMorgenBis": "13:00",
+                  "kasseMoNachmiVon": "14:00",
+                  "kasseMoNachmiBis": "16:00",
+                  "kasseDiMorgenVon": "09:30",
+                  "kasseDiMorgenBis": "13:00",
+                  "kasseDiNachmiVon": "14:00",
+                  "kasseDiNachmiBis": "18:00",
+                  "kasseMiMorgenVon": "09:30",
+                  "kasseMiMorgenBis": "13:00",
+                  "kasseMiNachmiVon": "14:00",
+                  "kasseMiNachmiBis": "16:00",
+                  "kasseDoMorgenVon": "09:30",
+                  "kasseDoMorgenBis": "13:00",
+                  "kasseDoNachmiVon": "14:00",
+                  "kasseDoNachmiBis": "18:00",
+                  "kasseFrMorgenVon": "09:30",
+                  "kasseFrMorgenBis": "13:00",
+                  "kasseFrNachmiVon": "14:00",
+                  "kasseFrNachmiBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    53.57102,
+                    10.06608
+                  ],
+                  "kasse": true
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Parameter(s) required or have/has invalid value.",
+            "schema": {
+              "$ref": "#/definitions/problem"
+            },
+            "examples": {
+              "Bad-Request": {
+                "type": "about:blank",
+                "status": 400,
+                "title": "Bad Request",
+                "detail": "The original error is masked. Please contact support for details.",
+                "instance": "/error-details/d46497b9-fa4f-449e-bf32-f66b928c968e",
+                "coba-activity-id": "957cf766-bf64-4390-883a-cb0f14fc9e56",
+                "coba-error-id": "d46497b9-fa4f-449e-bf32-f66b928c968e",
+                "coba-correlation-id": "Id-ffc9ac60ed3e80e110b74c2d"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required",
+            "schema": {
+              "$ref": "#/definitions/problem"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/problem"
+            }
+          }
+        }
+      }
+    },
+    "/geosearch/coordinates": {
+      "get": {
+        "operationId": "getServiceVersionBranchesGeoSearchCoordinates",
+        "summary": "Get branches by latitude & longitude",
+        "description": "Retrieves the entries using given geolocation coordinates (LAT and LNG). Filter by branch type.",
+        "tags": [
+          "geosearch"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/latParam"
+          },
+          {
+            "$ref": "#/parameters/lngParam"
+          },
+          {
+            "$ref": "#/parameters/typeParam"
+          },
+          {
+            "$ref": "#/parameters/advisorsParam"
+          },
+          {
+            "$ref": "#/parameters/approxDistanceParam"
+          },
+          {
+            "$ref": "#/parameters/minBranchesParam"
+          },
+          {
+            "$ref": "#/parameters/accuracyParam"
+          },
+          {
+            "$ref": "#/parameters/orgaDataParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/branches"
+            },
+            "examples": {
+              "53.55117-9.93571": [
+                {
+                  "id": "60ac41b0ac30b2f5d09e2780",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20040",
+                  "orgNummer": "0001417",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Altona",
+                  "anschriftPostleitzahl": "22765",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Paul-Nevermann-Platz 5",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 39831-0",
+                  "telefax": "040 39831-152",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:30",
+                  "moMorgenBis": "13:00",
+                  "moNachmiVon": "14:00",
+                  "moNachmiBis": "16:00",
+                  "diMorgenVon": "09:30",
+                  "diMorgenBis": "13:00",
+                  "diNachmiVon": "14:00",
+                  "diNachmiBis": "18:00",
+                  "miMorgenVon": "09:30",
+                  "miMorgenBis": "13:00",
+                  "miNachmiVon": "14:00",
+                  "miNachmiBis": "16:00",
+                  "doMorgenVon": "09:30",
+                  "doMorgenBis": "13:00",
+                  "doNachmiVon": "14:00",
+                  "doNachmiBis": "18:00",
+                  "frMorgenVon": "09:30",
+                  "frMorgenBis": "13:00",
+                  "frNachmiVon": "14:00",
+                  "frNachmiBis": "16:00",
+                  "kasseMoMorgenVon": "09:30",
+                  "kasseMoMorgenBis": "13:00",
+                  "kasseMoNachmiVon": "14:00",
+                  "kasseMoNachmiBis": "16:00",
+                  "kasseDiMorgenVon": "09:30",
+                  "kasseDiMorgenBis": "13:00",
+                  "kasseDiNachmiVon": "14:00",
+                  "kasseDiNachmiBis": "18:00",
+                  "kasseMiMorgenVon": "09:30",
+                  "kasseMiMorgenBis": "13:00",
+                  "kasseMiNachmiVon": "14:00",
+                  "kasseMiNachmiBis": "16:00",
+                  "kasseDoMorgenVon": "09:30",
+                  "kasseDoMorgenBis": "13:00",
+                  "kasseDoNachmiVon": "14:00",
+                  "kasseDoNachmiBis": "18:00",
+                  "kasseFrMorgenVon": "09:30",
+                  "kasseFrMorgenBis": "13:00",
+                  "kasseFrNachmiVon": "14:00",
+                  "kasseFrNachmiBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "FREI",
+                  "distanceKm": 0.0016157294780645387,
+                  "position": [
+                    53.55116899999999,
+                    9.9357344
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e2773",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20015",
+                  "orgNummer": "0083739",
+                  "orgTyp": "43",
+                  "orgTypName": "FILOK- Filiale ohne Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Osterstraße",
+                  "anschriftPostleitzahl": "20259",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Osterstr. 111",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 401993-0",
+                  "telefax": "040 401993-33",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:30",
+                  "moMorgenBis": "13:00",
+                  "moNachmiVon": "14:00",
+                  "moNachmiBis": "16:00",
+                  "diMorgenVon": "09:30",
+                  "diMorgenBis": "13:00",
+                  "diNachmiVon": "14:00",
+                  "diNachmiBis": "18:00",
+                  "miMorgenVon": "09:30",
+                  "miMorgenBis": "13:00",
+                  "miNachmiVon": "14:00",
+                  "miNachmiBis": "16:00",
+                  "doMorgenVon": "09:30",
+                  "doMorgenBis": "13:00",
+                  "doNachmiVon": "14:00",
+                  "doNachmiBis": "18:00",
+                  "frMorgenVon": "09:30",
+                  "frMorgenBis": "13:00",
+                  "frNachmiVon": "14:00",
+                  "frNachmiBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "TEILFREI",
+                  "naechsteFilHB": "20178",
+                  "distanceKm": 2.9427765023859886,
+                  "position": [
+                    53.5756181,
+                    9.9527717
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e278a",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20053",
+                  "orgNummer": "0089437",
+                  "orgTyp": "43",
+                  "orgTypName": "FILOK- Filiale ohne Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Othmarschen",
+                  "anschriftPostleitzahl": "22607",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Waitzstr. 11",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 890587-0",
+                  "telefax": "040 890587-50",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": false,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:30",
+                  "moMorgenBis": "13:00",
+                  "moNachmiVon": "14:00",
+                  "moNachmiBis": "16:00",
+                  "diMorgenVon": "09:30",
+                  "diMorgenBis": "13:00",
+                  "diNachmiVon": "14:00",
+                  "diNachmiBis": "18:00",
+                  "miMorgenVon": "09:30",
+                  "miMorgenBis": "13:00",
+                  "miNachmiVon": "14:00",
+                  "miNachmiBis": "16:00",
+                  "doMorgenVon": "09:30",
+                  "doMorgenBis": "13:00",
+                  "doNachmiVon": "14:00",
+                  "doNachmiBis": "18:00",
+                  "frMorgenVon": "09:30",
+                  "frMorgenBis": "13:00",
+                  "frNachmiVon": "14:00",
+                  "frNachmiBis": "16:00",
+                  "kasseMoMorgenVon": "09:30",
+                  "kasseMoMorgenBis": "13:00",
+                  "kasseMoNachmiVon": "14:00",
+                  "kasseMoNachmiBis": "16:00",
+                  "kasseDiMorgenVon": "09:30",
+                  "kasseDiMorgenBis": "13:00",
+                  "kasseDiNachmiVon": "14:00",
+                  "kasseDiNachmiBis": "18:00",
+                  "kasseMiMorgenVon": "09:30",
+                  "kasseMiMorgenBis": "13:00",
+                  "kasseMiNachmiVon": "14:00",
+                  "kasseMiNachmiBis": "16:00",
+                  "kasseDoMorgenVon": "09:30",
+                  "kasseDoMorgenBis": "13:00",
+                  "kasseDoNachmiVon": "14:00",
+                  "kasseDoNachmiBis": "18:00",
+                  "kasseFrMorgenVon": "09:30",
+                  "kasseFrMorgenBis": "13:00",
+                  "kasseFrNachmiVon": "14:00",
+                  "kasseFrNachmiBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "NICHTFREI",
+                  "naechsteFilHB": "20040",
+                  "distanceKm": 3.4755742954363447,
+                  "position": [
+                    53.5593823,
+                    9.8849422
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e277f",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20038",
+                  "orgNummer": "0001386",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Jungfernstieg",
+                  "anschriftPostleitzahl": "20354",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Große Bleichen 3",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 3683-7000",
+                  "telefax": "040 3683-1126",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:30",
+                  "moMorgenBis": "18:00",
+                  "diMorgenVon": "09:30",
+                  "diMorgenBis": "18:00",
+                  "miMorgenVon": "09:30",
+                  "miMorgenBis": "18:00",
+                  "doMorgenVon": "09:30",
+                  "doMorgenBis": "18:00",
+                  "frMorgenVon": "09:30",
+                  "frMorgenBis": "16:00",
+                  "kasseMoMorgenVon": "09:30",
+                  "kasseMoMorgenBis": "18:00",
+                  "kasseDiMorgenVon": "09:30",
+                  "kasseDiMorgenBis": "18:00",
+                  "kasseMiMorgenVon": "09:30",
+                  "kasseMiMorgenBis": "18:00",
+                  "kasseDoMorgenVon": "09:30",
+                  "kasseDoMorgenBis": "18:00",
+                  "kasseFrMorgenVon": "09:30",
+                  "kasseFrMorgenBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "FREI",
+                  "distanceKm": 3.6613857647653196,
+                  "position": [
+                    53.5535055,
+                    9.9909959
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e2791",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20076",
+                  "orgNummer": "0088141",
+                  "orgTyp": "08",
+                  "orgTypName": "UVV19-Filiale ohne Kasse (UVV19)",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Hafencity derzeit vorsorglich geschlossen",
+                  "anschriftPostleitzahl": "20457",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Überseeboulevard 2",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 3008692-0",
+                  "telefax": "040 3008692-50",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": false,
+                  "einzahlautomat": false,
+                  "cashin": false,
+                  "sbTerminal": false,
+                  "bezeichnung": "0P",
+                  "cashgroup": false,
+                  "vault": false,
+                  "barriereTyp": "FREI",
+                  "distanceKm": 4.16636538969178,
+                  "position": [
+                    53.5431547,
+                    9.997312299999999
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e2777",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20024",
+                  "orgNummer": "0001343",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Altstadt derzeit vorsorglich geschlossen",
+                  "anschriftPostleitzahl": "20095",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Ida-Ehre-Platz 14",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 30957-0",
+                  "telefax": "040 30957-133",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": true,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "TEILFREI",
+                  "naechsteFilHB": "20038",
+                  "distanceKm": 4.228321350553668,
+                  "position": [
+                    53.55067,
+                    9.99971
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b0ac30b2f5d09e2796",
+                  "importGroup": "BRANCHES",
+                  "nummer": "20082",
+                  "orgNummer": "0088399",
+                  "orgTyp": "08",
+                  "orgTypName": "UVV19-Filiale ohne Kasse (UVV19)",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "E",
+                  "name": "Hamburg-Pöseldorf derzeit vorsorglich geschlossen",
+                  "anschriftPostleitzahl": "20148",
+                  "anschriftOrt": "Hamburg",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Mittelweg 41b",
+                  "postanschriftPostleitzahl": "20349",
+                  "postanschriftOrt": "Hamburg",
+                  "postanschriftLand": "Germany",
+                  "telefon": "040 414624-0",
+                  "telefax": "040 414624-50",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": false,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "TEILFREI",
+                  "naechsteFilHB": "20038",
+                  "distanceKm": 4.443781423944585,
+                  "position": [
+                    53.57026,
+                    9.994819999999999
+                  ],
+                  "kasse": false
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Parameter(s) required or have/has invalid value.",
+            "schema": {
+              "$ref": "#/definitions/problem"
+            },
+            "examples": {
+              "Bad-Request": {
+                "type": "about:blank",
+                "status": 400,
+                "title": "Bad Request",
+                "detail": "The original error is masked. Please contact support for details.",
+                "instance": "/error-details/2d92b059-0d62-482f-a0c6-c1df50f55c7b",
+                "coba-activity-id": "46351916-89d0-483e-9fa2-c4ab96381c9b",
+                "coba-error-id": "2d92b059-0d62-482f-a0c6-c1df50f55c7b",
+                "coba-correlation-id": "Id-81cbac60643fd14d38570779"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required.",
+            "schema": {
+              "$ref": "#/definitions/problem"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/problem"
+            }
+          }
+        }
+      }
+    },
+    "/geosearch/zip_street": {
+      "get": {
+        "operationId": "getServiceVersionBranchesGeoSearchZipStreet",
+        "summary": "Get branches by zip & street",
+        "description": "Retrieves the entries using given zip (PLZ) and street. Filter by branch type.",
+        "tags": [
+          "geosearch"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/zipParam"
+          },
+          {
+            "$ref": "#/parameters/streetParam"
+          },
+          {
+            "$ref": "#/parameters/countryParam"
+          },
+          {
+            "$ref": "#/parameters/typeParam"
+          },
+          {
+            "$ref": "#/parameters/approxDistanceParam"
+          },
+          {
+            "$ref": "#/parameters/minBranchesParam"
+          },
+          {
+            "$ref": "#/parameters/orgaDataParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/branches"
+            },
+            "examples": {
+              "60385-Zeil": [
+                {
+                  "id": "60ac41b1ac30b2f5d09e295c",
+                  "importGroup": "BRANCHES",
+                  "nummer": "39258",
+                  "orgNummer": "0088617",
+                  "orgTyp": "08",
+                  "orgTypName": "UVV19-Filiale ohne Kasse (UVV19)",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "F",
+                  "name": "Frankfurt-Konstablerwache",
+                  "anschriftPostleitzahl": "60313",
+                  "anschriftOrt": "Frankfurt am Main",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Zeil 53",
+                  "postanschriftPostleitzahl": "60613",
+                  "postanschriftOrt": "Frankfurt am Main",
+                  "postanschriftLand": "Germany",
+                  "telefon": "069 138701-0",
+                  "telefax": "069 138701-55",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:00",
+                  "moMorgenBis": "13:00",
+                  "moNachmiVon": "14:00",
+                  "moNachmiBis": "16:00",
+                  "diMorgenVon": "09:00",
+                  "diMorgenBis": "13:00",
+                  "diNachmiVon": "14:00",
+                  "diNachmiBis": "18:00",
+                  "miMorgenVon": "09:00",
+                  "miMorgenBis": "13:00",
+                  "miNachmiVon": "14:00",
+                  "miNachmiBis": "16:00",
+                  "doMorgenVon": "09:00",
+                  "doMorgenBis": "13:00",
+                  "doNachmiVon": "14:00",
+                  "doNachmiBis": "18:00",
+                  "frMorgenVon": "09:00",
+                  "frMorgenBis": "13:00",
+                  "frNachmiVon": "14:00",
+                  "frNachmiBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    50.1140659,
+                    8.686952
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b2ac30b2f5d09e29dd",
+                  "importGroup": "BRANCHES",
+                  "nummer": "40057",
+                  "orgNummer": "0003209",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "F",
+                  "name": "Frankfurt-Hauptwache",
+                  "anschriftPostleitzahl": "60311",
+                  "anschriftOrt": "Frankfurt am Main",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Roßmarkt 14",
+                  "postanschriftPostleitzahl": "60613",
+                  "postanschriftOrt": "Frankfurt am Main",
+                  "postanschriftLand": "Germany",
+                  "telefon": "069 297050-0",
+                  "telefax": "069 297050-50",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": true,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:00",
+                  "moMorgenBis": "13:00",
+                  "moNachmiVon": "14:00",
+                  "moNachmiBis": "16:00",
+                  "diMorgenVon": "09:00",
+                  "diMorgenBis": "13:00",
+                  "diNachmiVon": "14:00",
+                  "diNachmiBis": "18:00",
+                  "miMorgenVon": "09:00",
+                  "miMorgenBis": "13:00",
+                  "miNachmiVon": "14:00",
+                  "miNachmiBis": "16:00",
+                  "doMorgenVon": "09:00",
+                  "doMorgenBis": "13:00",
+                  "doNachmiVon": "14:00",
+                  "doNachmiBis": "18:00",
+                  "frMorgenVon": "09:00",
+                  "frMorgenBis": "13:00",
+                  "frNachmiVon": "14:00",
+                  "frNachmiBis": "16:00",
+                  "kasseMoMorgenVon": "09:00",
+                  "kasseMoMorgenBis": "13:00",
+                  "kasseMoNachmiVon": "14:00",
+                  "kasseMoNachmiBis": "16:00",
+                  "kasseDiMorgenVon": "09:00",
+                  "kasseDiMorgenBis": "13:00",
+                  "kasseDiNachmiVon": "14:00",
+                  "kasseDiNachmiBis": "18:00",
+                  "kasseMiMorgenVon": "09:00",
+                  "kasseMiMorgenBis": "13:00",
+                  "kasseMiNachmiVon": "14:00",
+                  "kasseMiNachmiBis": "16:00",
+                  "kasseDoMorgenVon": "09:00",
+                  "kasseDoMorgenBis": "13:00",
+                  "kasseDoNachmiVon": "14:00",
+                  "kasseDoNachmiBis": "18:00",
+                  "kasseFrMorgenVon": "09:00",
+                  "kasseFrMorgenBis": "13:00",
+                  "kasseFrNachmiVon": "14:00",
+                  "kasseFrNachmiBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    50.1125357,
+                    8.677158799999999
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b2ac30b2f5d09e29e8",
+                  "importGroup": "BRANCHES",
+                  "nummer": "40080",
+                  "orgNummer": "0003300",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "F",
+                  "name": "Commerzbank-Tower",
+                  "anschriftPostleitzahl": "60311",
+                  "anschriftOrt": "Frankfurt am Main",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Kaiserstr. 16",
+                  "postanschriftPostleitzahl": "60613",
+                  "postanschriftOrt": "Frankfurt am Main",
+                  "postanschriftLand": "Germany",
+                  "telefon": "069 136-45588",
+                  "telefax": "069 136-27659",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": true,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:00",
+                  "moMorgenBis": "16:00",
+                  "diMorgenVon": "09:00",
+                  "diMorgenBis": "18:00",
+                  "miMorgenVon": "09:00",
+                  "miMorgenBis": "18:00",
+                  "doMorgenVon": "09:00",
+                  "doMorgenBis": "18:00",
+                  "frMorgenVon": "09:00",
+                  "frMorgenBis": "16:00",
+                  "kasseMoMorgenVon": "09:00",
+                  "kasseMoMorgenBis": "13:00",
+                  "kasseDiMorgenVon": "09:00",
+                  "kasseDiMorgenBis": "13:00",
+                  "kasseMiMorgenVon": "09:00",
+                  "kasseMiMorgenBis": "13:00",
+                  "kasseDoMorgenVon": "09:00",
+                  "kasseDoMorgenBis": "13:00",
+                  "kasseFrMorgenVon": "09:00",
+                  "kasseFrMorgenBis": "13:00",
+                  "cashgroup": false,
+                  "vault": false,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    50.1110501,
+                    8.6741528
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b2ac30b2f5d09e29e4",
+                  "importGroup": "BRANCHES",
+                  "nummer": "40072",
+                  "orgNummer": "0003245",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S3",
+                  "orgSpecName": "Servicebereich 3",
+                  "land": "000",
+                  "bundesland": "F",
+                  "name": "Frankfurt-Opernplatz",
+                  "anschriftPostleitzahl": "60313",
+                  "anschriftOrt": "Frankfurt am Main",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Opernplatz 6",
+                  "postanschriftPostleitzahl": "60613",
+                  "postanschriftOrt": "Frankfurt am Main",
+                  "postanschriftLand": "Germany",
+                  "telefon": "069 299891-0",
+                  "telefax": "069 299891-28",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:00",
+                  "moMorgenBis": "16:00",
+                  "diMorgenVon": "09:00",
+                  "diMorgenBis": "18:00",
+                  "miMorgenVon": "09:00",
+                  "miMorgenBis": "16:00",
+                  "doMorgenVon": "09:00",
+                  "doMorgenBis": "18:00",
+                  "frMorgenVon": "09:00",
+                  "frMorgenBis": "16:00",
+                  "kasseMoMorgenVon": "09:00",
+                  "kasseMoMorgenBis": "16:00",
+                  "kasseDiMorgenVon": "09:00",
+                  "kasseDiMorgenBis": "18:00",
+                  "kasseMiMorgenVon": "09:00",
+                  "kasseMiMorgenBis": "16:00",
+                  "kasseDoMorgenVon": "09:00",
+                  "kasseDoMorgenBis": "18:00",
+                  "kasseFrMorgenVon": "09:00",
+                  "kasseFrMorgenBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "TEILFREI",
+                  "naechsteFilHB": "40057",
+                  "position": [
+                    50.11521880000001,
+                    8.6726727
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b2ac30b2f5d09e29de",
+                  "importGroup": "BRANCHES",
+                  "nummer": "40058",
+                  "orgNummer": "0002921",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "F",
+                  "name": "Frankfurt am Main",
+                  "anschriftPostleitzahl": "60311",
+                  "anschriftOrt": "Frankfurt am Main",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Kaiserstr. 30",
+                  "postanschriftPostleitzahl": "60613",
+                  "postanschriftOrt": "Frankfurt am Main",
+                  "postanschriftLand": "Germany",
+                  "telefon": "069 136-23012",
+                  "telefax": "069 136-29837",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:00",
+                  "moMorgenBis": "16:00",
+                  "diMorgenVon": "09:00",
+                  "diMorgenBis": "18:00",
+                  "miMorgenVon": "09:00",
+                  "miMorgenBis": "16:00",
+                  "doMorgenVon": "09:00",
+                  "doMorgenBis": "18:00",
+                  "frMorgenVon": "09:00",
+                  "frMorgenBis": "16:00",
+                  "kasseMoMorgenVon": "09:00",
+                  "kasseMoMorgenBis": "16:00",
+                  "kasseDiMorgenVon": "09:00",
+                  "kasseDiMorgenBis": "18:00",
+                  "kasseMiMorgenVon": "09:00",
+                  "kasseMiMorgenBis": "16:00",
+                  "kasseDoMorgenVon": "09:00",
+                  "kasseDoMorgenBis": "18:00",
+                  "kasseFrMorgenVon": "09:00",
+                  "kasseFrMorgenBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "TEILFREI",
+                  "naechsteFilHB": "40080",
+                  "position": [
+                    50.1100747,
+                    8.6732901
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b1ac30b2f5d09e295e",
+                  "importGroup": "BRANCHES",
+                  "nummer": "39284",
+                  "orgNummer": "0082738",
+                  "orgTyp": "08",
+                  "orgTypName": "UVV19-Filiale ohne Kasse (UVV19)",
+                  "orgSpec": "S2",
+                  "orgSpecName": "Servicebereich 2",
+                  "land": "000",
+                  "bundesland": "F",
+                  "name": "Frankfurt-Ostend derzeit vorsorglich geschlossen",
+                  "anschriftPostleitzahl": "60314",
+                  "anschriftOrt": "Frankfurt am Main",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Louis-Appia-Passage 11",
+                  "postanschriftPostleitzahl": "60613",
+                  "postanschriftOrt": "Frankfurt am Main",
+                  "postanschriftLand": "Germany",
+                  "telefon": "069 9494251-0",
+                  "telefax": "069 9494251-50",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": false,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "cashgroup": false,
+                  "vault": false,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    50.1127166,
+                    8.7054703
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b1ac30b2f5d09e295a",
+                  "importGroup": "BRANCHES",
+                  "nummer": "39252",
+                  "orgNummer": "0040952",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S1",
+                  "orgSpecName": "Servicebereich 1",
+                  "land": "000",
+                  "bundesland": "F",
+                  "name": "Frankfurt-Fürstenhof",
+                  "anschriftPostleitzahl": "60329",
+                  "anschriftOrt": "Frankfurt am Main",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Gallusanlage 2",
+                  "postanschriftPostleitzahl": "60613",
+                  "postanschriftOrt": "Frankfurt am Main",
+                  "postanschriftLand": "Germany",
+                  "telefon": "069 136-52000",
+                  "telefax": "069 136-54329",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:00",
+                  "moMorgenBis": "16:00",
+                  "diMorgenVon": "09:00",
+                  "diMorgenBis": "18:00",
+                  "miMorgenVon": "09:00",
+                  "miMorgenBis": "18:00",
+                  "doMorgenVon": "09:00",
+                  "doMorgenBis": "18:00",
+                  "frMorgenVon": "09:00",
+                  "frMorgenBis": "16:00",
+                  "kasseMoMorgenVon": "09:00",
+                  "kasseMoMorgenBis": "16:00",
+                  "kasseDiMorgenVon": "09:00",
+                  "kasseDiMorgenBis": "18:00",
+                  "kasseMiMorgenVon": "09:00",
+                  "kasseMiMorgenBis": "18:00",
+                  "kasseDoMorgenVon": "09:00",
+                  "kasseDoMorgenBis": "18:00",
+                  "kasseFrMorgenVon": "09:00",
+                  "kasseFrMorgenBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    50.108648,
+                    8.671812800000001
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b2ac30b2f5d09e29e3",
+                  "importGroup": "BRANCHES",
+                  "nummer": "40071",
+                  "orgNummer": "0088325",
+                  "orgTyp": "43",
+                  "orgTypName": "FILOK- Filiale ohne Kasse",
+                  "orgSpec": "S2",
+                  "orgSpecName": "Servicebereich 2",
+                  "land": "000",
+                  "bundesland": "F",
+                  "name": "Frankfurt-Schweizer Straße",
+                  "anschriftPostleitzahl": "60594",
+                  "anschriftOrt": "Frankfurt am Main",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Schweizer Str. 27",
+                  "postanschriftPostleitzahl": "60613",
+                  "postanschriftOrt": "Frankfurt am Main",
+                  "postanschriftLand": "Germany",
+                  "telefon": "069 962201-0",
+                  "telefax": "069 962201-50",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:00",
+                  "moMorgenBis": "13:00",
+                  "moNachmiVon": "14:00",
+                  "moNachmiBis": "16:00",
+                  "diMorgenVon": "09:00",
+                  "diMorgenBis": "13:00",
+                  "diNachmiVon": "14:00",
+                  "diNachmiBis": "18:00",
+                  "miMorgenVon": "09:00",
+                  "miMorgenBis": "13:00",
+                  "miNachmiVon": "14:00",
+                  "miNachmiBis": "16:00",
+                  "doMorgenVon": "09:00",
+                  "doMorgenBis": "13:00",
+                  "doNachmiVon": "14:00",
+                  "doNachmiBis": "18:00",
+                  "frMorgenVon": "09:00",
+                  "frMorgenBis": "13:00",
+                  "frNachmiVon": "14:00",
+                  "frNachmiBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "TEILFREI",
+                  "naechsteFilHB": "39252",
+                  "position": [
+                    50.1036,
+                    8.6797697
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b2ac30b2f5d09e29e1",
+                  "importGroup": "BRANCHES",
+                  "nummer": "40068",
+                  "orgNummer": "0082938",
+                  "orgTyp": "08",
+                  "orgTypName": "UVV19-Filiale ohne Kasse (UVV19)",
+                  "orgSpec": "S2",
+                  "orgSpecName": "Servicebereich 2",
+                  "land": "000",
+                  "bundesland": "F",
+                  "name": "Frankfurt-Am Hauptbahnhof derzeit vorsorglich geschlossen",
+                  "anschriftPostleitzahl": "60329",
+                  "anschriftOrt": "Frankfurt am Main",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Kaiserstr. 73",
+                  "postanschriftPostleitzahl": "60613",
+                  "postanschriftOrt": "Frankfurt am Main",
+                  "postanschriftLand": "Germany",
+                  "telefon": "069 27119-0",
+                  "telefax": "069 27119-19",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": false,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "cashgroup": false,
+                  "vault": false,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    50.1076755,
+                    8.666440200000002
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b2ac30b2f5d09e29e0",
+                  "importGroup": "BRANCHES",
+                  "nummer": "40065",
+                  "orgNummer": "0003227",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S2",
+                  "orgSpecName": "Servicebereich 2",
+                  "land": "000",
+                  "bundesland": "F",
+                  "name": "Frankfurt-Berger Str.",
+                  "anschriftPostleitzahl": "60385",
+                  "anschriftOrt": "Frankfurt am Main",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Berger Str. 188 - 190",
+                  "postanschriftPostleitzahl": "60613",
+                  "postanschriftOrt": "Frankfurt am Main",
+                  "postanschriftLand": "Germany",
+                  "telefon": "069 943441-0",
+                  "telefax": "069 943441-50",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:00",
+                  "moMorgenBis": "13:00",
+                  "moNachmiVon": "14:00",
+                  "moNachmiBis": "16:00",
+                  "diMorgenVon": "09:00",
+                  "diMorgenBis": "13:00",
+                  "diNachmiVon": "14:00",
+                  "diNachmiBis": "18:00",
+                  "miMorgenVon": "09:00",
+                  "miMorgenBis": "13:00",
+                  "miNachmiVon": "14:00",
+                  "miNachmiBis": "18:00",
+                  "doMorgenVon": "09:00",
+                  "doMorgenBis": "13:00",
+                  "doNachmiVon": "14:00",
+                  "doNachmiBis": "18:00",
+                  "frMorgenVon": "09:00",
+                  "frMorgenBis": "13:00",
+                  "frNachmiVon": "14:00",
+                  "frNachmiBis": "16:00",
+                  "kasseMoMorgenVon": "09:00",
+                  "kasseMoMorgenBis": "13:00",
+                  "kasseDiMorgenVon": "09:00",
+                  "kasseDiMorgenBis": "13:00",
+                  "kasseDiNachmiVon": "14:00",
+                  "kasseDiNachmiBis": "18:00",
+                  "kasseMiMorgenVon": "09:00",
+                  "kasseMiMorgenBis": "13:00",
+                  "kasseDoMorgenVon": "09:00",
+                  "kasseDoMorgenBis": "13:00",
+                  "kasseDoNachmiVon": "14:00",
+                  "kasseDoNachmiBis": "18:00",
+                  "kasseFrMorgenVon": "09:00",
+                  "kasseFrMorgenBis": "13:00",
+                  "kasseFrNachmiVon": "14:00",
+                  "kasseFrNachmiBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "TEILFREI",
+                  "naechsteFilHB": "39284",
+                  "position": [
+                    50.1252967,
+                    8.7064978
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b2ac30b2f5d09e29e5",
+                  "importGroup": "BRANCHES",
+                  "nummer": "40073",
+                  "orgNummer": "0003264",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S3",
+                  "orgSpecName": "Servicebereich 3",
+                  "land": "000",
+                  "bundesland": "F",
+                  "name": "Frankfurt-Europaviertel",
+                  "anschriftPostleitzahl": "60327",
+                  "anschriftOrt": "Frankfurt am Main",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Mainzer Landstr. 151",
+                  "postanschriftPostleitzahl": "60613",
+                  "postanschriftOrt": "Frankfurt am Main",
+                  "postanschriftLand": "Germany",
+                  "telefon": "069 136-47272",
+                  "telefax": "069 136-47262",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "moMorgenVon": "09:00",
+                  "moMorgenBis": "13:00",
+                  "moNachmiVon": "14:00",
+                  "moNachmiBis": "16:00",
+                  "diMorgenVon": "09:00",
+                  "diMorgenBis": "13:00",
+                  "diNachmiVon": "14:00",
+                  "diNachmiBis": "18:00",
+                  "miMorgenVon": "09:00",
+                  "miMorgenBis": "13:00",
+                  "miNachmiVon": "14:00",
+                  "miNachmiBis": "16:00",
+                  "doMorgenVon": "09:00",
+                  "doMorgenBis": "13:00",
+                  "doNachmiVon": "14:00",
+                  "doNachmiBis": "18:00",
+                  "frMorgenVon": "09:00",
+                  "frMorgenBis": "13:00",
+                  "frNachmiVon": "14:00",
+                  "frNachmiBis": "16:00",
+                  "kasseMoMorgenVon": "09:00",
+                  "kasseMoMorgenBis": "13:00",
+                  "kasseMoNachmiVon": "14:00",
+                  "kasseMoNachmiBis": "16:00",
+                  "kasseDiMorgenVon": "09:00",
+                  "kasseDiMorgenBis": "13:00",
+                  "kasseDiNachmiVon": "14:00",
+                  "kasseDiNachmiBis": "18:00",
+                  "kasseMiMorgenVon": "09:00",
+                  "kasseMiMorgenBis": "13:00",
+                  "kasseMiNachmiVon": "14:00",
+                  "kasseMiNachmiBis": "16:00",
+                  "kasseDoNachmiVon": "14:00",
+                  "kasseDoNachmiBis": "18:00",
+                  "kasseFrMorgenVon": "09:00",
+                  "kasseFrMorgenBis": "13:00",
+                  "kasseFrNachmiVon": "14:00",
+                  "kasseFrNachmiBis": "16:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    50.1066525,
+                    8.6552584
+                  ],
+                  "kasse": true
+                },
+                {
+                  "id": "60ac41b2ac30b2f5d09e29df",
+                  "importGroup": "BRANCHES",
+                  "nummer": "40064",
+                  "orgNummer": "0088045",
+                  "orgTyp": "08",
+                  "orgTypName": "UVV19-Filiale ohne Kasse (UVV19)",
+                  "orgSpec": "S3",
+                  "orgSpecName": "Servicebereich 3",
+                  "land": "000",
+                  "bundesland": "F",
+                  "name": "Frankfurt-Bockenheim derzeit vorsorglich geschlossen",
+                  "anschriftPostleitzahl": "60487",
+                  "anschriftOrt": "Frankfurt am Main",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Gräfstr. 85",
+                  "postanschriftPostleitzahl": "60613",
+                  "postanschriftOrt": "Frankfurt am Main",
+                  "postanschriftLand": "Germany",
+                  "telefon": "069 795095-0",
+                  "telefax": "069 795095-45",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    50.11999,
+                    8.6499014
+                  ],
+                  "kasse": false
+                },
+                {
+                  "id": "60ac41b2ac30b2f5d09e29e2",
+                  "importGroup": "BRANCHES",
+                  "nummer": "40070",
+                  "orgNummer": "0065484",
+                  "orgTyp": "06",
+                  "orgTypName": "FIL  - Filiale mit Kasse",
+                  "orgSpec": "S2",
+                  "orgSpecName": "Servicebereich 2",
+                  "land": "000",
+                  "bundesland": "F",
+                  "name": "Frankfurt-Dornbusch",
+                  "anschriftPostleitzahl": "60320",
+                  "anschriftOrt": "Frankfurt am Main",
+                  "anschriftLand": "Germany",
+                  "anschriftStrasse": "Eschersheimer Landstr. 248",
+                  "postanschriftPostleitzahl": "60613",
+                  "postanschriftOrt": "Frankfurt am Main",
+                  "postanschriftLand": "Germany",
+                  "telefon": "069 956252-0",
+                  "telefax": "069 956252-50",
+                  "attribute": "JA",
+                  "bankleitzahl": 0,
+                  "kontoauszugsdrucker": false,
+                  "geldautomat": true,
+                  "einzahlautomat": true,
+                  "cashin": false,
+                  "sbTerminal": true,
+                  "bezeichnung": "0P",
+                  "diNachmiVon": "14:00",
+                  "diNachmiBis": "18:00",
+                  "cashgroup": false,
+                  "vault": true,
+                  "barriereTyp": "FREI",
+                  "position": [
+                    50.1395019,
+                    8.6706404
+                  ],
+                  "kasse": true
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Parameter(s) required or have/has invalid value.",
+            "schema": {
+              "$ref": "#/definitions/problem"
+            },
+            "examples": {
+              "Bad-Request": {
+                "type": "about:blank",
+                "status": 400,
+                "title": "Bad Request",
+                "detail": "The original error is masked. Please contact support for details.",
+                "instance": "/error-details/b53e6f4f-35cc-4488-addf-abbc42517602",
+                "coba-activity-id": "dbbca5a6-607b-4ac3-9d0b-9b4e72403a47",
+                "coba-error-id": "b53e6f4f-35cc-4488-addf-abbc42517602",
+                "coba-correlation-id": "Id-3100ad607f4a7e0bdf5b9a6c"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required.",
+            "schema": {
+              "$ref": "#/definitions/problem"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/problem"
+            }
+          }
+        }
+      }
+    },
+    "/orgasearch/address": {
+      "get": {
+        "operationId": "getNearestBrancheOrgaAdress",
+        "summary": "Get orga info of branches by text search",
+        "description": "Retrieves nearest branch by free text search string. Type in an address or point of interest. The search will use your input as center and retrieve nearest branches.",
+        "tags": [
+          "orgasearch"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/addressParam"
+          },
+          {
+            "$ref": "#/parameters/filtersParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/filials"
+            },
+            "examples": {
+              "Paris-Rue-Lombard": {
+                "nummer": "54454",
+                "orgNummer": "0088651",
+                "pkFilial": {
+                  "nummer": "54454",
+                  "orgNummer": "0088651",
+                  "name": "Saarburg",
+                  "anschriftPostleitzahl": "54439",
+                  "anschriftOrt": "Saarburg",
+                  "anschriftStrasse": "Am Markt 2",
+                  "postanschriftPostleitzahl": "60613",
+                  "postanschriftOrt": "Frankfurt am Main",
+                  "telefon": "06581 87-0",
+                  "telefax": "06581 87-50",
+                  "barriereTyp": "TEILFREI",
+                  "naechsteFilHB": "54430",
+                  "position": [
+                    49.60811140000001,
+                    6.549827800000001
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parameter(s) required or have/has invalid value.",
+            "schema": {
+              "$ref": "#/definitions/problem"
+            },
+            "examples": {
+              "Bad-Request": {
+                "type": "about:blank",
+                "status": 400,
+                "title": "Bad Request",
+                "detail": "The original error is masked. Please contact support for details.",
+                "instance": "/error-details/3daca1ba-571c-4567-aec3-93422d4223fb",
+                "coba-activity-id": "00d87bc5-f5f3-40d4-ae40-2cb734024d83",
+                "coba-error-id": "3daca1ba-571c-4567-aec3-93422d4223fb",
+                "coba-correlation-id": "Id-0000ad60794af2034bc8dfaf"
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required.",
+            "schema": {
+              "$ref": "#/definitions/problem"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/problem"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "branches": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/branch"
+      }
+    },
+    "branch": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "importGroup": {
+          "type": "string"
+        },
+        "nummer": {
+          "type": "string"
+        },
+        "orgNummer": {
+          "type": "string"
+        },
+        "orgTyp": {
+          "type": "string"
+        },
+        "orgTypName": {
+          "type": "string"
+        },
+        "orgSpec": {
+          "type": "string"
+        },
+        "orgSpecName": {
+          "type": "string"
+        },
+        "land": {
+          "type": "string"
+        },
+        "bundesland": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "anschriftPostleitzahl": {
+          "type": "string"
+        },
+        "anschriftOrt": {
+          "type": "string"
+        },
+        "anschriftOrtteil": {
+          "type": "string"
+        },
+        "anschriftLand": {
+          "type": "string"
+        },
+        "anschriftStrasse": {
+          "type": "string"
+        },
+        "SWIFT": {
+          "type": "string"
+        },
+        "postanschriftPostfach": {
+          "type": "string"
+        },
+        "postanschriftPostleitzahl": {
+          "type": "string"
+        },
+        "postanschriftOrt": {
+          "type": "string"
+        },
+        "postanschriftLand": {
+          "type": "string"
+        },
+        "postanschriftOrtteil": {
+          "type": "string"
+        },
+        "telefon": {
+          "type": "string"
+        },
+        "telefax": {
+          "type": "string"
+        },
+        "attribute": {
+          "type": "string"
+        },
+        "bankleitzahl": {
+          "type": "integer"
+        },
+        "kontoauszugsdrucker": {
+          "type": "boolean"
+        },
+        "geldautomat": {
+          "type": "boolean"
+        },
+        "einzahlautomat": {
+          "type": "boolean"
+        },
+        "cashin": {
+          "type": "boolean"
+        },
+        "sbTerminal": {
+          "type": "boolean"
+        },
+        "bezeichnung": {
+          "type": "string"
+        },
+        "moMorgenVon": {
+          "type": "string"
+        },
+        "moMorgenBis": {
+          "type": "string"
+        },
+        "moNachmiVon": {
+          "type": "string"
+        },
+        "moNachmiBis": {
+          "type": "string"
+        },
+        "diMorgenVon": {
+          "type": "string"
+        },
+        "diMorgenBis": {
+          "type": "string"
+        },
+        "diNachmiVon": {
+          "type": "string"
+        },
+        "diNachmiBis": {
+          "type": "string"
+        },
+        "miMorgenVon": {
+          "type": "string"
+        },
+        "miMorgenBis": {
+          "type": "string"
+        },
+        "miNachmiVon": {
+          "type": "string"
+        },
+        "miNachmiBis": {
+          "type": "string"
+        },
+        "doMorgenVon": {
+          "type": "string"
+        },
+        "doMorgenBis": {
+          "type": "string"
+        },
+        "doNachmiVon": {
+          "type": "string"
+        },
+        "doNachmiBis": {
+          "type": "string"
+        },
+        "frMorgenVon": {
+          "type": "string"
+        },
+        "frMorgenBis": {
+          "type": "string"
+        },
+        "frNachmiVon": {
+          "type": "string"
+        },
+        "frNachmiBis": {
+          "type": "string"
+        },
+        "kasseMoMorgenVon": {
+          "type": "string"
+        },
+        "kasseMoMorgenBis": {
+          "type": "string"
+        },
+        "kasseMoNachmiVon": {
+          "type": "string"
+        },
+        "kasseMoNachmiBis": {
+          "type": "string"
+        },
+        "kasseDiMorgenVon": {
+          "type": "string"
+        },
+        "kasseDiMorgenBis": {
+          "type": "string"
+        },
+        "kasseDiNachmiVon": {
+          "type": "string"
+        },
+        "kasseDiNachmiBis": {
+          "type": "string"
+        },
+        "kasseMiMorgenVon": {
+          "type": "string"
+        },
+        "kasseMiMorgenBis": {
+          "type": "string"
+        },
+        "kasseMiNachmiVon": {
+          "type": "string"
+        },
+        "kasseMiNachmiBis": {
+          "type": "string"
+        },
+        "kasseDoMorgenVon": {
+          "type": "string"
+        },
+        "kasseDoMorgenBis": {
+          "type": "string"
+        },
+        "kasseDoNachmiVon": {
+          "type": "string"
+        },
+        "kasseDoNachmiBis": {
+          "type": "string"
+        },
+        "kasseFrMorgenVon": {
+          "type": "string"
+        },
+        "kasseFrMorgenBis": {
+          "type": "string"
+        },
+        "kasseFrNachmiVon": {
+          "type": "string"
+        },
+        "kasseFrNachmiBis": {
+          "type": "string"
+        },
+        "kasseSaMorgenVon": {
+          "type": "string"
+        },
+        "kasseSaMorgenBis": {
+          "type": "string"
+        },
+        "kasseSaNachmiVon": {
+          "type": "string"
+        },
+        "kasseSaNachmiBis": {
+          "type": "string"
+        },
+        "kasseSoMorgenVon": {
+          "type": "string"
+        },
+        "kasseSoMorgenBis": {
+          "type": "string"
+        },
+        "kasseSoNachmiVon": {
+          "type": "string"
+        },
+        "kasseSoNachmiBis": {
+          "type": "string"
+        },
+        "kasseFeierMorgenVon": {
+          "type": "string"
+        },
+        "kasseFeierMorgenBis": {
+          "type": "string"
+        },
+        "kasseFeierNachmiVon": {
+          "type": "string"
+        },
+        "kasseFeierNachmiBis": {
+          "type": "string"
+        },
+        "cashgroup": {
+          "type": "boolean"
+        },
+        "vault": {
+          "type": "boolean"
+        },
+        "barriereTyp": {
+          "type": "string"
+        },
+        "naechsteFilHB": {
+          "type": "string"
+        },
+        "beratungsFilHB": {
+          "type": "string"
+        },
+        "distanceKm": {
+          "type": "number"
+        },
+        "position": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "kasse": {
+          "type": "boolean"
+        },
+        "pkFilial": {
+          "$ref": "#/definitions/organizationalFilial"
+        },
+        "skbFilial": {
+          "$ref": "#/definitions/organizationalFilial"
+        },
+        "ukFilial": {
+          "$ref": "#/definitions/organizationalFilial"
+        },
+        "sukbFilial": {
+          "$ref": "#/definitions/organizationalFilial"
+        },
+        "wmFilial": {
+          "$ref": "#/definitions/organizationalFilial"
+        },
+        "typAFilial": {
+          "$ref": "#/definitions/organizationalFilial"
+        },
+        "regionalFilial": {
+          "$ref": "#/definitions/organizationalFilial"
+        },
+        "niederlassungFilial": {
+          "$ref": "#/definitions/organizationalFilial"
+        }
+      },
+      "minProperties": 1
+    },
+    "organizationalFilial": {
+      "type": "object",
+      "properties": {
+        "nummer": {
+          "type": "string"
+        },
+        "orgNummer": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "anschriftPostleitzahl": {
+          "type": "string"
+        },
+        "anschriftOrt": {
+          "type": "string"
+        },
+        "anschriftStrasse": {
+          "type": "string"
+        },
+        "postanschriftPostfach": {
+          "type": "string"
+        },
+        "postanschriftPostleitzahl": {
+          "type": "string"
+        },
+        "postanschriftOrt": {
+          "type": "string"
+        },
+        "telefon": {
+          "type": "string"
+        },
+        "telefax": {
+          "type": "string"
+        },
+        "barriereTyp": {
+          "type": "string"
+        },
+        "naechsteFilHB": {
+          "type": "string"
+        },
+        "beratungsFilHB": {
+          "type": "string"
+        },
+        "position": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "filials": {
+      "type": "object",
+      "properties": {
+        "nummer": {
+          "type": "string"
+        },
+        "orgNummer": {
+          "type": "string"
+        },
+        "pkFilial": {
+          "$ref": "#/definitions/filial"
+        },
+        "ukFilial": {
+          "$ref": "#/definitions/filial"
+        },
+        "wmFilial": {
+          "$ref": "#/definitions/filial"
+        },
+        "niederlassungFilial": {
+          "$ref": "#/definitions/filial"
+        },
+        "skbFilial": {
+          "$ref": "#/definitions/filial"
+        },
+        "sukbFilial": {
+          "$ref": "#/definitions/filial"
+        },
+        "regionalFilial": {
+          "$ref": "#/definitions/filial"
+        },
+        "ffFilial": {
+          "$ref": "#/definitions/filial"
+        }
+      },
+      "minProperties": 1
+    },
+    "filial": {
+      "type": "object",
+      "properties": {
+        "nummer": {
+          "type": "string"
+        },
+        "orgNummer": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "anschriftPostleitzahl": {
+          "type": "string"
+        },
+        "anschriftOrt": {
+          "type": "string"
+        },
+        "anschriftStrasse": {
+          "type": "string"
+        },
+        "postanschriftPostfach": {
+          "type": "string"
+        },
+        "postanschriftPostleitzahl": {
+          "type": "string"
+        },
+        "postanschriftOrt": {
+          "type": "string"
+        },
+        "telefon": {
+          "type": "string"
+        },
+        "telefax": {
+          "type": "string"
+        },
+        "barriereTyp": {
+          "type": "string"
+        },
+        "naechsteFilHB": {
+          "type": "string"
+        },
+        "beratungsFilHB": {
+          "type": "string"
+        },
+        "position": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "object",
+      "properties": {
+        "uptimeFormatted": {
+          "type": "string"
+        },
+        "buildTime": {
+          "type": "string",
+          "example": "2019-02-14T13:10:02Z"
+        },
+        "buildVersion": {
+          "type": "string"
+        },
+        "healthy": {
+          "type": "boolean"
+        },
+        "uptime": {
+          "type": "integer"
+        }
+      }
+    },
+    "problem": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "Service Unavailable",
+          "description": "A short, summary of the problem type. Written in english and readable for engineers (usually not suited for non technical stakeholders and not localized)"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "example": 503,
+          "description": "The HTTP status code generated by the origin server for this occurrence of the problem."
+        },
+        "detail": {
+          "type": "string",
+          "example": "Connection to database timed out",
+          "description": "A human-readable explanation specific to this occurrence of the problem."
+        }
+      },
+      "description": "A problem compliant to RFC-7807."
+    }
+  },
+  "parameters": {
+    "cityParam": {
+      "in": "query",
+      "name": "city",
+      "required": true,
+      "type": "string",
+      "description": "City is used to define a geo point that will be used as a CENTER for a search."
+    },
+    "zipParam": {
+      "in": "query",
+      "name": "zip",
+      "required": true,
+      "type": "string",
+      "description": "ZIP is used to define a geo point that will be used as a CENTER for a search."
+    },
+    "streetParam": {
+      "in": "query",
+      "name": "street",
+      "required": false,
+      "type": "string",
+      "description": "Street is used to define a geo point that will be used as a CENTER for a search. Parameter is optional."
+    },
+    "countryParam": {
+      "in": "query",
+      "name": "country",
+      "required": false,
+      "type": "string",
+      "default": "Germany",
+      "description": "Country is used to define a geo point that will be used as a CENTER for a search."
+    },
+    "latParam": {
+      "in": "query",
+      "name": "lat",
+      "required": true,
+      "type": "number",
+      "description": "Latitude of a point that will be used as a center of the search."
+    },
+    "orgaDataParam": {
+      "in": "query",
+      "name": "orgaData",
+      "type": "boolean",
+      "default": false,
+      "description": "If true, response includes all organizational units which are referenced in a branch."
+    },
+    "lngParam": {
+      "in": "query",
+      "name": "lng",
+      "required": true,
+      "type": "number",
+      "description": "Longitude of a point that will be used as a center of the search."
+    },
+    "typeParam": {
+      "in": "query",
+      "name": "type",
+      "required": true,
+      "description": "Aggregate branches based on a given TYPE.",
+      "type": "string",
+      "enum": [
+        "P",
+        "P-ATM",
+        "F",
+        "F-N",
+        "F-S",
+        "C",
+        "CE",
+        "CE-ATM",
+        "M",
+        "M-ATM",
+        "ORGA-PK",
+        "ORGA-SKB",
+        "ORGA-UK"
+      ]
+    },
+    "approxDistanceParam": {
+      "in": "query",
+      "name": "approxDistance",
+      "required": false,
+      "default": "false",
+      "type": "string",
+      "description": "Compute and display approximate distance if true."
+    },
+    "minBranchesParam": {
+      "in": "query",
+      "name": "minBranches",
+      "required": false,
+      "type": "string",
+      "default": "0",
+      "description": "Minimum number of results. If there are not enough branches within the original search radius, the remaining results will come from beyond the initial search area."
+    },
+    "accuracyParam": {
+      "in": "query",
+      "name": "accuracy",
+      "required": false,
+      "type": "integer",
+      "minimum": 5,
+      "maximum": 500,
+      "default": 5,
+      "description": "The accuracy of the search area. Value is defined in KM. Maximum 500."
+    },
+    "advisorsParam": {
+      "in": "query",
+      "name": "advisors",
+      "required": false,
+      "type": "boolean",
+      "description": "When set to true, only branches with advisors will be displayed. If false, only those without advisors are displayed."
+    },
+    "filtersParam": {
+      "in": "query",
+      "name": "filters",
+      "description": "Array of values, determining what sort of information to retrieve.",
+      "type": "array",
+      "collectionFormat": "csv",
+      "items": {
+        "type": "string",
+        "enum": [
+          "PK",
+          "SKB",
+          "UK",
+          "SUKB",
+          "WM",
+          "TYPA",
+          "REG",
+          "ND",
+          "FF",
+          "OP",
+          "TF"
+        ]
+      }
+    },
+    "addressParam": {
+      "name": "query",
+      "in": "query",
+      "description": "Adress of a branch.",
+      "required": true,
+      "type": "string"
+    },
+    "branchIdParam": {
+      "description": "branchId (FILHB)",
+      "required": true,
+      "in": "path",
+      "name": "branchId",
+      "type": "string"
+    }
+  },
+  "securityDefinitions": {
+    "API Key Authentication": {
+      "type": "apiKey",
+      "name": "KeyId",
+      "in": "header",
+      "description": "API key authentication using an API key without additional secret."
+    }
+  }
+}
